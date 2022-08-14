@@ -1,0 +1,370 @@
+
+spring:
+  task:
+    scheduling:
+      pool:
+        size: 2
+
+server:
+  port: 8083
+  tomcat:
+    threads:
+      max: 300
+
+
+logging:
+  file:
+    name: logs/pullingAppLog.log
+
+---
+#test 환경
+spring:
+  config:
+    activate:
+      on-profile: test
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/testDB
+    username: postgres
+    password: postgres
+    hikari:
+      maximum-pool-size: 30
+      leakDetectionThreshold: 20000
+
+  jpa:
+    show-sql: false
+    generate-ddl: true
+
+property:
+  upbitCron:
+    tick:
+      doubleCheck:
+        cronCommand: 00 */5 * * * *
+        period: 10
+      restartSessions:
+        cronCommand : 00 */8 * * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 00 */3 * * * *
+
+    candle:
+      period:
+        cronCommand: 00 */4 * * * *
+
+  bithumbCron:
+    candle:
+      period:
+        cronCommand: 00 00 * * * *
+
+    tick:
+      restartSessions:
+        cronCommand: 00 17 00 * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 01 12 00 * * *
+
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: DEBUG
+
+
+    com:
+      zaxxer:
+        hikari:
+          HikariConfig: DEBUG
+
+
+
+---
+#test 환경
+spring:
+  config:
+    activate:
+      on-profile: test-h2
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;
+    username: sa
+    password:
+    hikari:
+      maximum-pool-size: 30
+
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+
+    jpa:
+    show-sql: false
+    generate-ddl: true
+
+property:
+  upbitCron:
+    tick:
+      doubleCheck:
+        cronCommand: 00 */5 * * * *
+        period: 10
+      restartSessions:
+        cronCommand : 00 */8 * * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 00 */3 * * * *
+
+    candle:
+      period:
+        cronCommand: 00 */4 * * * *
+
+  bithumbCron:
+    candle:
+      period:
+        cronCommand: 00 00 * * * *
+
+    tick:
+      restartSessions:
+        cronCommand: 00 17 00 * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 01 12 00 * * *
+
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: DEBUG
+
+
+    com:
+      zaxxer:
+        hikari:
+          HikariConfig: DEBUG
+
+
+
+
+---
+#dev 환경
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.0.13:5432/v1_test
+    username: postgres1
+    password: postgres1
+    hikari:
+      maximum-pool-size: 30
+      leakDetectionThreshold: 20000
+
+
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+property:
+  upbitCron:
+    tick:
+      doubleCheck:
+        cronCommand: 00 */5 * * * *
+        period: 10
+      restartSessions:
+        cronCommand : 00 */8 * * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 00 */3 * * * *
+
+    candle:
+      period:
+        cronCommand: 00 */4 * * * *
+
+  bithumbCron:
+    candle:
+      period:
+        cronCommand: 00 00 * * * *
+
+    tick:
+      restartSessions:
+        cronCommand: 00 17 00 * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 01 12 00 * * *
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: TRACE
+
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+
+---
+#prod 환경
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres-01.cohovelkyjmq.ap-northeast-2.rds.amazonaws.com:5432/v1
+    username: postgres
+    password: postgres1
+    hikari:
+      maximum-pool-size: 30
+      leakDetectionThreshold: 200000
+
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: validate
+
+property:
+  upbitCron:
+    tick:
+      doubleCheck:
+        cronCommand: 00 */15 * * * *
+        period: 15
+      restartSessions:
+        cronCommand : 00 00 00 * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 00 10 00 */5 * *
+
+    candle:
+      period:
+        cronCommand: 00 */3 * * * *
+
+  bithumbCron:
+    tick:
+      restartSessions:
+        cronCommand : 00 17 00 * * *
+    orderbook:
+      restartSessions:
+        cronCommand: 01 12 00 * * *
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: TRACE
+
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+
+---
+#prod2 환경
+spring:
+  config:
+    activate:
+      on-profile: prod2
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://192.168.0.13:5432/v1
+    #url: jdbc:postgresql://192.168.1.101:5432/v1
+    username: postgres1
+    password: postgres1
+    hikari:
+      maximum-pool-size: 30
+      leakDetectionThreshold: 200000
+
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create
+
+property:
+  upbitCron:
+    tick:
+      doubleCheck:
+        cronCommand: 00 */15 * * * *
+        period: 15
+      restartSessions:
+        cronCommand : 00 00 00 * * *
+
+    orderbook:
+      restartSessions:
+        cronCommand: 00 10 00 */5 * *
+
+    candle:
+      period:
+        cronCommand: 00 */3 * * * *
+
+  bithumbCron:
+    tick:
+      restartSessions:
+        cronCommand : 00 17 00 * * *
+    orderbook:
+      restartSessions:
+        cronCommand: 01 12 00 * * *
+
+logging:
+  level:
+    org:
+      springframework:
+        cache: TRACE
+
+    com.zaxxer.hikari.HikariConfig: DEBUG
+    com.zaxxer.hikari: TRACE
+
+
+
+
+
+---
+#docker 환경
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/testDB
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+---
+#컨테이너
+spring:
+  config:
+    activate:
+      on-profile: container
+
+  datasource:
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+    url: jdbc:tc:postgresql:///testDb
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
+
+# docker run -p 5432:5432 --name test-db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=testDB -d postgres

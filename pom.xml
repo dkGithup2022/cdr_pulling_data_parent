@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>PullingCoinApplication</name>
+    <description>data supply application, target: ["upbit orderbook ", "bithumb orderbook", "upbit trade","bithumb trade","upbit candle", "bithumb candle"]</description>
+
+    <groupId>com.dk0124.cdr</groupId>
+    <artifactId>cdr-pulling-coin-app-parent</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>cdr_common_constant_1.0</module>
+        <module>cdr_common_persistence_1.0</module>
+        <module>cdr_pulling_coin_app</module>
+    </modules>
+
+</project>

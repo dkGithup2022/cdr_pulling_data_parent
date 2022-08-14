@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cdr_common_constant_1.0" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cdr_common_persistence_1.0" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/cdr_pulling_coin_app" vcs="Git" />
+  </component>
+</project>
