@@ -1,7 +1,7 @@
 package com.dk0124.cdr.app.dependencyTest;
 
 
-import com.dk0124.cdr.app.tags.IntegrationWithContainer;
+import com.dk0124.cdr.tags.IntegrationWithContainer;
 import com.dk0124.cdr.constants.coinCode.UpbitCoinCode.UpbitCoinCode;
 import com.dk0124.cdr.entity.upbit.candle.UpbitCandle;
 import com.dk0124.cdr.entity.upbit.candle.UpbitCandleFactory;
