@@ -8,7 +8,6 @@ import com.dk0124.cdr.constants.coinCode.CoinCode;
 import com.dk0124.cdr.constants.coinCode.UpbitCoinCode.UpbitCoinCode;
 import com.dk0124.cdr.constants.task.TaskType;
 import com.dk0124.cdr.dto.upbit.tick.UpbitTickDto;
-import com.dk0124.cdr.entity.upbit.tick.UpbitTick;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

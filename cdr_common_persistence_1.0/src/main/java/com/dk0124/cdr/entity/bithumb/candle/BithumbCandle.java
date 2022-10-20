@@ -19,7 +19,6 @@ public class BithumbCandle {
         this.lowPrice = lowPrice;
         this.tradeAmount = tradeAmount;
     }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
