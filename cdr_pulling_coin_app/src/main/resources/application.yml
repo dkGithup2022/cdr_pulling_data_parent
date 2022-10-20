@@ -289,7 +289,7 @@ spring:
     show-sql: false
     generate-ddl: true
     hibernate:
-      ddl-auto: validate
+      ddl-auto: create
 
 property:
   upbitCron:
